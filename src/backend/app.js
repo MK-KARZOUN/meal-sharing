@@ -19,7 +19,7 @@ app.use(express.json());
 
 app.use(cors());
 
-router.use("/meals", mealsRouter);
+router.use("/meals" ,mealsRouter);
 
 if (process.env.API_PATH) {
   app.use(process.env.API_PATH, router);
@@ -28,8 +28,13 @@ if (process.env.API_PATH) {
 }
 
 // for the frontend. Will first be covered in the react class
-app.use("*", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(`${buildPath}/index.html`));
 });
 
 module.exports = app;
+
+
+
+
+ 

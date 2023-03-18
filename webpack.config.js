@@ -38,7 +38,7 @@ module.exports = {
     extensions: ['*', '.js', '.jsx'],
   },
   devServer: {
-    static: '/',
+    static: '/dist',
     historyApiFallback: true,
     port: parseInt(process.env.CLIENT_PORT, 10),
     open: process.env.OPEN_BROWSER === 'true' ? true : false,
