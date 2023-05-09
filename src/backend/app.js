@@ -21,6 +21,17 @@ app.use(cors());
 
 router.use("/meals", mealsRouter);
 
+router.get("/all-meals", async (request, response, next) => {
+  try {
+    const result = await knex("meal").select("*")
+    response.json(result);
+  } catch (error) {
+    console.error(error);
+    response.status = 500;
+    response.statusMessage="Enternal server error"
+  }
+});
+
 router.get("/future-meals", async (request, response) => {
   try {
     const result = await knex("meal")
