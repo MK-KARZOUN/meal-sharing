@@ -23,12 +23,11 @@ router.use("/meals", mealsRouter);
 
 router.get("/all-meals", async (request, response, next) => {
   try {
-    const result = await knex("meal").select("*")
+    const result = await knex("meal").select("*");
     response.json(result);
   } catch (error) {
     console.error(error);
-    response.status = 500;
-    response.statusMessage="Enternal server error"
+    response.status(500).send("Enternal server error");
   }
 });
 
@@ -40,8 +39,7 @@ router.get("/future-meals", async (request, response) => {
     response.json(result);
   } catch (error) {
     console.error(error);
-    response.status = 500;
-    response.statusMessage = "Enternal server error";
+    response.status(500).send("Enternal server error");
   }
 });
 
@@ -53,22 +51,20 @@ router.get("/past-meals", async (request, response) => {
     response.json(result);
   } catch (error) {
     console.error(error);
-    response.status = 500;
-    response.statusMessage = "Enternal server error";
+    response.status(500).send("Enternal server error");
   }
 });
 router.get("/first-meal", async (request, response) => {
   try {
     const result = await knex("meal").select("*").orderBy("id").first();
     if (!result) {
-      response.send("there are no meals");
-      response.status = 404;
+      response.sendStatus(204);
+    } else {
+      response.json(result);
     }
-    response.json(result);
   } catch (error) {
     console.error(error);
-    response.status = 500;
-    response.statusMessage = "Enternal server error";
+    response.status(500).send("Enternal server error");
   }
 });
 
@@ -76,14 +72,13 @@ router.get("/last-meal", async (request, response) => {
   try {
     const result = await knex("meal").select("*").orderBy("id", "desc").first();
     if (!result) {
-      response.send("there are no meals");
-      response.status = 404;
+      response.sendStatus(204);
+    } else {
+      response.json(result);
     }
-    response.json(result);
   } catch (error) {
     console.error(error);
-    response.status = 500;
-    response.statusMessage = "Enternal server error";
+    response.status(500).send("Enternal server error");
   }
 });
 
