@@ -21,7 +21,7 @@ app.use(cors());
 
 router.use("/meals", mealsRouter);
 
-router.get("/all-meals", async (request, response, next) => {
+router.get("/all-meals", async (request, response) => {
   try {
     const result = await knex("meal").select("*");
     response.json(result);
