@@ -7,6 +7,7 @@ const mealsRouter = require("./api/meals");
 const buildPath = path.join(__dirname, "../../dist");
 const port = process.env.PORT || 3000;
 const cors = require("cors");
+const reservationsRouter = require("./api/reservations")
 
 // For week4 no need to look into this!
 // Serve the built client html
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(cors());
 
 router.use("/meals", mealsRouter);
+router.use("/reservations", reservationsRouter)
 
 router.get("/all-meals", async (request, response) => {
   try {
