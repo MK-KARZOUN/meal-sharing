@@ -9,7 +9,7 @@ router.get("/", async (request, response) => {
 
   try {
     if (!result.length) {
-      response.status(404).json("No data found");
+      return response.status(404).json("No data found");
     } else {
       response.status(200).json(result);
     }
@@ -22,11 +22,12 @@ router.get("/", async (request, response) => {
 // Adds a new meal to the database
 
 router.post("/", async (request, response) => {
+  debugger;
   const postData = request.body;
   const result = await knex("meal").insert(postData);
   try {
-    if (!postData.length) {
-      response.status(400).json("Bad request, nothing to add");
+    if (!Object.entries(postData).length) {
+      return response.status(400).json("Bad request, nothing to add");
     } else {
       response
         .status(201)
@@ -45,7 +46,7 @@ router.get("/:id", async (request, response) => {
   const result = await knex("meal").select().where("id", givenId);
   try {
     if (!result.length) {
-      response.json(`Meal with Id: ${givenId} is not found`);
+      return response.json(`Meal with Id: ${givenId} is not found`);
     } else {
       response.json(result);
     }
@@ -64,10 +65,10 @@ router.put("/:id", async (request, response) => {
   try {
     // if body is empty
     if (!Object.entries(newData).length) {
-      response.status(400).json("Bad request, nothing to update");
+      return response.status(400).json("Bad request, nothing to update");
     } else if (!res.length) {
       // if there are no such id in meal-table
-      response.status(404).json(`Meal with Id: ${givenId} is not found`);
+      return response.status(404).json(`Meal with Id: ${givenId} is not found`);
     } else {
       // updata the data
       await knex("meal").select("*").where("id", givenId).update(newData);
@@ -90,7 +91,7 @@ router.delete("/:id", async (request, response) => {
   try {
     if (!res.length) {
       // if there are no such id in meal-table
-      response.status(404).json(`Meal with Id: ${givenId} is not found`);
+      return response.status(404).json(`Meal with Id: ${givenId} is not found`);
     } else {
       await knex("meal").where("id", givenId).del();
       response
