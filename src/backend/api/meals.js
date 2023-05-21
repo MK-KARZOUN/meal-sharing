@@ -22,7 +22,6 @@ const knex = require("../database");
 // Adds a new meal to the database
 
 router.post("/", async (request, response) => {
-  debugger;
   const postData = request.body;
   const result = await knex("meal").insert(postData);
   try {
@@ -127,7 +126,6 @@ router.get("/", async (request, response) => {
 
   // Returns all meals that are cheaper than maxPrice.
   if (maxPrice) {
-    debugger;
     const parsedMaxPrice = parseInt(maxPrice);
     if (isNaN(parsedMaxPrice)) {
       return response

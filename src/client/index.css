@@ -6,12 +6,13 @@
 }
 
 #root {
-  padding-left: 30%;
-  padding-right: 30%;
+  /* padding-left: 30%;
+  padding-right: 30%; */
   height: 100vh;
+  background-color: #666;
 }
 
-body {
+/* body {
   margin: 0;
   font-size: 17px;
 }
@@ -49,4 +50,4 @@ button {
     padding-left: 0;
     padding-right: 0;
   }
-}
+} */
