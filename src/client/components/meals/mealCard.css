@@ -1,0 +1,21 @@
+.meal-card {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.meal-link {
+  text-decoration: none;
+}
+
+.meal-title {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.meal-price {
+  font-size: 1rem;
+  color: #fff;
+}
