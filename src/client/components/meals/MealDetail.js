@@ -31,7 +31,7 @@ const MealDetail = () => {
           console.log(`${meal.title} is deleted`);
           history.push("/meals");
         } else {
-          throw new Error("Error adding new meal");
+          throw new Error("Error deleting meal");
         }
       })
       .catch((error) => {
