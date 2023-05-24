@@ -1,0 +1,53 @@
+.MealsList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.meal-list {
+  background-color: #444;
+  display: grid;
+  list-style-type: none;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 20px 0;
+  gap: 0.5rem;
+  padding: 0;
+  border-radius: 4px;
+}
+
+.meal-item {
+  list-style: none;
+  text-decoration: none;
+  text-align: center;
+  background-color: #555;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.loading-message {
+  color: #fff;
+  text-align: center;
+  margin-top: 20px;
+}
+
+button {
+  align-self: flex-start;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #222;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #fea918;
+  cursor: pointer;
+  color: black;
+}
